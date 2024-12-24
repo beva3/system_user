@@ -3,33 +3,54 @@ const data = [
         "id": 1,
         "name": "John Doe",
         "email": "john.doe@example.com",
-        "role": "Admin"
+        "role": "Admin",
+        "status": {
+            "text": "Active",
+            "class": "bg-success"
+        }
     },
     {
         "id": 2,
         "name": "Jane Smith",
         "email": "jane.smith@example.com",
-        "role": "Editor"
+        "role": "Editor",
+        "status": {
+            "text": "Pending",
+            "class": "bg-warning"
+        }
     },
     {
         "id": 3,
         "name": "Robert Brown",
         "email": "robert.brown@example.com",
-        "role": "Author"
+        "role": "Author",
+        "status": {
+            "text": "Inactive",
+            "class": "bg-danger"
+        }
     },
     {
         "id": 4,
         "name": "Emily Davis",
         "email": "emily.davis@example.com",
-        "role": "Subscriber"
+        "role": "Subscriber",
+        "status": {
+            "text": "Active",
+            "class": "bg-success"
+        }
     },
     {
         "id": 5,
         "name": "Michael Wilson",
         "email": "michael.wilson@example.com",
-        "role": "Admin"
+        "role": "Admin",
+        "status": {
+            "text": "Inactive",
+            "class": "bg-danger"
+        }
     }
 ]
+
 let tbody = document.querySelector('#row-data')
 const searchInput = document.getElementById('searchInput')
 
@@ -42,7 +63,7 @@ let get_row = function(d){
             <td>${d.name}</td>
             <td>${d.email}</td>
             <td>${d.role}</td>
-            <td><span class="badge bg-success">Active</span></td>
+            <td><span class="badge ${d.status.class}">${d.status.text}</span></td>
         </tr>
     `
 }
