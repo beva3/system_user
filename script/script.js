@@ -65,7 +65,7 @@ function search(data,query){
 
 display(data)
 
-searchInput.addEventListener('keyup',()=>{
+searchInput.addEventListener('input',()=>{
     const data_filter = search(data,searchInput.value)
     if (data_filter.length > 0) {
         display(data_filter)
