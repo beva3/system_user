@@ -56,7 +56,10 @@ function display(tab){
 
 function search(data,query){
     // console.log(data,query);
-    return data.filter(item => item.name.toUpperCase().includes(query.toUpperCase()));
+    return data.filter(item => 
+        item.name.toUpperCase().includes(query.toUpperCase()) ||
+        item.email.toUpperCase().includes(query.toUpperCase())
+    );
 }
 
 
@@ -71,4 +74,31 @@ searchInput.addEventListener('keyup',()=>{
     }
     
 })
-// console.log((search(data,'J')));
+
+function category(){
+    // Select DOM elements
+    const categoryFilter = document.getElementById("categoryFilter");
+    const rowData = document.getElementById("row-data");
+
+    // Function to filter table rows based on category
+    function filterByCategory() {
+        const selectedCategory = categoryFilter.value; // Get selected category
+
+        // Get all rows in the table body
+        const rows = rowData.querySelectorAll("tr");
+
+        rows.forEach(row => {
+            const role = row.cells[3].textContent; // Get the role column (4th column)
+            if (selectedCategory === "" || role === selectedCategory) {
+                row.style.display = ""; // Show row
+            } else {
+                row.style.display = "none"; // Hide row
+            }
+        });
+    }
+
+    // Add event listener to dropdown
+    categoryFilter.addEventListener("change", filterByCategory);
+
+}
+category()
