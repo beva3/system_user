@@ -56,17 +56,18 @@ function display(tab){
 
 function search(data,query){
     // console.log(data,query);
-    return data.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+    return data.filter(item => item.name.toUpperCase().includes(query.toUpperCase()));
 }
 
 
 display(data)
+
 searchInput.addEventListener('keyup',()=>{
     const data_filter = search(data,searchInput.value)
     if (data_filter.length > 0) {
         display(data_filter)
     }else{
-        tbody.innerHTML = `<h1 style="text-align:center;">Not Found</h1>`
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;"><h1>Not Found</h1></td></tr>`
     }
     
 })
