@@ -122,4 +122,33 @@ function category(){
     categoryFilter.addEventListener("change", filterByCategory);
 
 }
+
+function _status(){
+    // Select DOM elements
+    const statusFilter = document.getElementById("statusFilter");
+    const rowData = document.getElementById("row-data");
+
+    // Function to filter table rows based on category
+    function filterBystatus() {
+        const selectedCategory = statusFilter.value; // Get selected category
+
+        // Get all rows in the table body
+        const rows = rowData.querySelectorAll("tr");
+
+        rows.forEach(row => {
+            const role = row.cells[4].textContent; // Get the role column (4th column)
+            if (selectedCategory === "" || role === selectedCategory) {
+                row.style.display = ""; // Show row
+            } else {
+                row.style.display = "none"; // Hide row
+            }
+        });
+    }
+
+    // Add event listener to dropdown
+    statusFilter.addEventListener("change", filterBystatus);
+
+}
+
 category()
+_status()
