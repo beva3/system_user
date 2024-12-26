@@ -95,60 +95,27 @@ searchInput.addEventListener('input',()=>{
     }
     
 })
+// tsy afaka asorina eto ireto fa tsy mandeha ilay izy inona no antony
+const roles = document.getElementById("categoryFilter");
+const _status = document.getElementById("statusFilter");
+const rowData = document.getElementById("row-data");
+const rows = rowData.querySelectorAll("tr");
 
-function category(){
-    // Select DOM elements
-    const categoryFilter = document.getElementById("categoryFilter");
-    const rowData = document.getElementById("row-data");
-
-    // Function to filter table rows based on category
-    function filterByCategory() {
-        const selectedCategory = categoryFilter.value; // Get selected category
-
-        // Get all rows in the table body
-        const rows = rowData.querySelectorAll("tr");
+function category(items,index){
+    items.addEventListener("change", function filterByCategory() {
+        const selectedCategory = items.value; // Get selected category
 
         rows.forEach(row => {
-            const role = row.cells[3].textContent; // Get the role column (4th column)
-            if (selectedCategory === "" || role === selectedCategory) {
+            const item = row.cells[index].textContent; // Get the role column (4th column)
+            if (selectedCategory === "" || item === selectedCategory) {
                 row.style.display = ""; // Show row
             } else {
                 row.style.display = "none"; // Hide row
             }
         });
-    }
-
-    // Add event listener to dropdown
-    categoryFilter.addEventListener("change", filterByCategory);
+    });
 
 }
-
-function _status(){
-    // Select DOM elements
-    const statusFilter = document.getElementById("statusFilter");
-    const rowData = document.getElementById("row-data");
-
-    // Function to filter table rows based on category
-    function filterBystatus() {
-        const selectedCategory = statusFilter.value; // Get selected category
-
-        // Get all rows in the table body
-        const rows = rowData.querySelectorAll("tr");
-
-        rows.forEach(row => {
-            const role = row.cells[4].textContent; // Get the role column (4th column)
-            if (selectedCategory === "" || role === selectedCategory) {
-                row.style.display = ""; // Show row
-            } else {
-                row.style.display = "none"; // Hide row
-            }
-        });
-    }
-
-    // Add event listener to dropdown
-    statusFilter.addEventListener("change", filterBystatus);
-
-}
-
-category()
-_status()
+category(roles,3)
+category(_status,4)
+// _status()
